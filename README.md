@@ -1,2 +1,32 @@
-# in-vivo-car-t-framework
-体内 CAR-T 技术尽调框架 · In Vivo CAR-T Technical Due Diligence Framework
+# 体内 CAR-T 技术尽调框架
+
+In Vivo CAR-T Technical Due Diligence Framework
+
+**[点击这里，打开在线阅读版](https://curiousnobot.github.io/in-vivo-car-t-framework/)**
+
+阅读网址：[https://curiousnobot.github.io/in-vivo-car-t-framework/](https://curiousnobot.github.io/in-vivo-car-t-framework/)
+
+手机和电脑均可直接通过浏览器打开，无须登录 GitHub，也无须安装或下载文件。分享给他人时，发送上述阅读网址即可。
+
+**作者：Curious_RZ** · 当前版本：v3.2
+
+## 如何使用
+
+1. 点击技术主链上的环节，或使用“阅读环节”菜单切换模块。
+2. 点击主题标题逐级展开；长说明、投资人关注事项和资料依据可单独展开或收起。
+3. 使用中文或英文关键词搜索技术点，例如“内体逃逸”或“Endosomal Escape”；点击搜索结果可直接定位对应节点。
+4. 点击参考资料编号查看来源，再使用“返回原技术点”继续阅读。
+
+## 内容范围
+
+本框架以体内 CAR-T 为主要参考路线，按照药物作用链组织关键技术挑战、验证问题与所需证据，并展示基因编辑、体内编码治疗性蛋白等产品路径的延伸关系。
+
+包含 9 个模块、205 个分级技术问题、28 项投资人关注说明、66 条参考资料和 45 个中英文术语定义。覆盖载荷设计、制剂开发与 CMC、体内及胞内递送、工程细胞功能、药效与安全性、临床开发，以及全链共性尽调事项。
+
+这是通用技术尽调框架。条目是否适用、证据成熟度和开发要求，需结合具体产品构型、开发阶段、目标地区及正式监管沟通判断。
+
+## 更新与发布
+
+网站通过 GitHub Pages 从本仓库的 `main` 分支根目录发布。更新仓库中的网页文件后，GitHub 会自动重新部署，阅读网址保持不变；本地文件修改不会自动上传。
+
+参考资料截至 2026-10-08；术语校准日期为 2026-10-09。
