@@ -262,13 +262,14 @@ html:not([data-appearance-ready="true"]) .appearance-controls { visibility: hidd
 .section-nav { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-bottom: 12px; padding: 4px 0 14px; border-bottom: 1px solid var(--line); }
 .section-nav a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
 .section-nav a:hover { text-decoration: underline; }
-.reading-plan { margin: 0 0 20px; padding: 11px 14px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface-green); }
+.reading-plan { display: block; margin: 0 0 20px; padding: 11px 14px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface-green); }
 .reading-plan-label { display: block; margin: 0 0 4px; color: var(--text-main); font-weight: 650; line-height: 1.6; }
 .reading-plan-label [lang="en"] { margin-left: 6px; color: var(--text-muted); font-weight: 400; }
-.reading-plan .section-nav { gap: 0 17px; margin: 0; padding: 0; border: 0; }
-.reading-plan .section-nav a { min-height: 38px; }
+.reading-plan-links { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 17px; min-width: 0; }
+.reading-plan-links a { max-width: 100%; min-height: 38px; padding-block: 4px; line-height: 1.6; }
 .chapter-focus { margin: 14px 0 20px; padding: 11px 14px; border-left: 3px solid var(--line-purple); background: var(--surface-purple); }
 .chapter-focus > strong { display: block; margin-bottom: 6px; font-weight: 650; }
+.chapter-focus > strong [lang="en"] { margin-left: 6px; color: var(--text-muted); font-weight: 400; }
 .chapter-focus p:last-child { margin-bottom: 0; }
 .section-intro { max-width: 78ch; margin: 0 0 17px; color: var(--text-muted); }
 .focus-items { min-width: 0; margin: 18px 0 0; padding-left: 17px; border-left: 1px solid var(--line-strong); }
@@ -278,7 +279,9 @@ html:not([data-appearance-ready="true"]) .appearance-controls { visibility: hidd
 .knowledge-section { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); scroll-margin-top: 110px; }
 .node-body .knowledge-section > h3 { margin-top: 0; padding-left: 12px; border-left: 3px solid var(--line-strong); }
 .node-body .knowledge-section p:last-child { margin-bottom: 0; }
-.knowledge-subsection > h4, .knowledge-subsection > h5 { margin: 0 0 12px; }
+.knowledge-subsection > h4, .knowledge-subsection > h5, .knowledge-subsection > h6 { margin: 0 0 12px; }
+.detail-focus { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--line); }
+.detail-focus > .knowledge-subsection:first-of-type { margin-top: 12px; padding-top: 0; border-top: 0; }
 .node-body .challenge-section > h3 { border-left-color: var(--line-purple); }
 .evidence-bullets { margin: 12px 0 0; padding-left: 23px; list-style-type: disc; }
 .evidence-bullets > li { margin-bottom: 12px; padding-left: 3px; }
@@ -461,7 +464,7 @@ footer { margin-top: 29px; color: var(--text-muted); }
   .header-tools { gap: 8px; }
   .header-resource-links { gap: 10px; }
   .reading-plan { padding: 9px 11px; }
-  .reading-plan .section-nav { gap: 0 13px; }
+  .reading-plan-links { gap: 4px 13px; }
   .chapter-focus { padding-inline: 11px; }
   .focus-items { padding-left: 12px; }
   .scope-note { padding-inline: 12px; }
