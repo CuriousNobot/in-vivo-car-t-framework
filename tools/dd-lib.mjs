@@ -12,10 +12,14 @@ export function bi(zh, en) {
   return `<span class="bilingual-title"><span class="title-zh">${esc(zh)}</span><span class="title-en" lang="en">${esc(en)}</span></span>`;
 }
 
+export function cite(ids) {
+  if (!ids?.length) return "";
+  return `<span class="reference-links">${ids.map((id) => `<a class="source-ref" href="#source-${id}" aria-label="参考资料 ${id}">${id}</a>`).join(" ")}</span>`;
+}
+
 export function src(ids) {
   if (!ids?.length) return "";
-  const links = ids.map((id) => `<a class="source-ref" href="#source-${id}" aria-label="参考资料 ${id}">${id}</a>`).join(" ");
-  return `<p class="reference-row"><span class="reference-label">信息来源 <span lang="en">Sources</span></span><span class="reference-links">${links}</span></p>`;
+  return `<p class="reference-row"><span class="reference-label">信息来源 <span lang="en">Sources</span></span>${cite(ids)}</p>`;
 }
 
 export function table(caption, headers, rows) {

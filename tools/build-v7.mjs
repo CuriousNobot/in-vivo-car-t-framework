@@ -1,7 +1,7 @@
 import fs from "fs";
 import { esc, bi, src } from "./dd-lib.mjs";
 import { buildNodes } from "./dd-nodes.mjs";
-import { sourceItemsHtml, glossaryExtraHtml, scoreDims, redFlags } from "./dd-catalog.mjs";
+import { sourceItemsHtml, glossaryExtraHtml, scoreDims, redFlags, resolveCitations } from "./dd-catalog.mjs";
 
 const root = "/workspace";
 const basePath = "/tmp/invivo-v64.html";
@@ -23,6 +23,12 @@ const CSS = `
 .flag-list label { display: block; }
 .score-summary, .flag-summary { background: var(--surface-purple); padding: 8px 10px; }
 .scorecard select, [data-scorecard] select { max-width: 11em; background: var(--surface); border: 1px solid var(--line-strong); }
+/* Dense criteria tables get the full reading column; prose keeps its measure. */
+.node-body { max-width: none; }
+.node-body > section > p, .node-body > section > ul, .node-body > section > ol,
+.node-body .dd-note, .node-body .flag-list, .node-body .section-intro { max-width: 82ch; }
+.node-body .table-scroll { max-width: 100%; }
+.route-table caption { max-width: 82ch; }
 tr.is-proven { background: var(--surface-selected); }
 tr.is-against, tr.is-open { background: var(--surface-purple); }
 `;
@@ -195,8 +201,8 @@ function buildPage(route) {
   const articles = nodes.map(articleHtml).join("");
   let suffix = parts.suffix;
   if (!suffix.includes("</dl>") || !suffix.includes("</ol>")) throw new Error("glossary or sources missing");
-  suffix = suffix.replace("</dl>", glossaryExtraHtml() + "</dl>").replace("</ol>", sourceItemsHtml() + "</ol>");
-  const body = prefix + outlineHtml(nodes, labelZh, labelEn) + parts.mid + `<div id="node-library">${articles}` + parts.between + suffix;
+  suffix = suffix.replace("</dl>", glossaryExtraHtml() + "</dl>").replace("</ol>", sourceItemsHtml(route) + "</ol>");
+  const body = resolveCitations(route, prefix + outlineHtml(nodes, labelZh, labelEn) + parts.mid + `<div id="node-library">${articles}` + parts.between + suffix);
   const known = existingSourceIds(suffix);
   const cited = [...body.matchAll(/href="#source-([^"]+)"/g)].map((m) => m[1]);
   const missing = [...new Set(cited.filter((id) => !known.has(id)))];
@@ -204,7 +210,7 @@ function buildPage(route) {
   for (const n of nodes) for (const r of n.related || []) if (!ids.has(r.id)) throw new Error(route + " related missing " + r.id + " from " + n.id);
   const contentOwner = {};
   const searchItems = nodes.map((n) => {
-    const htmlNode = articleHtml(n);
+    const htmlNode = resolveCitations(route, articleHtml(n));
     for (const m of htmlNode.matchAll(/id="([^"]+)"/g)) {
       if (m[1] !== n.id) contentOwner[m[1]] = n.id;
     }
